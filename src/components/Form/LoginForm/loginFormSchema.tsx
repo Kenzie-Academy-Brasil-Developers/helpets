@@ -1,8 +1,8 @@
 import { z } from "zod";
 
 export const loginFormSchema = z.object({
-    email: z.string().min(1, { message: "O e-mail é obrigatório" }).nonempty({ message: "Campo obrigatório" }),
-    password: z.string().min(1, { message: "A senha é obrigatória" }).nonempty({ message: "Campo obrigatório" })
+    email: z.string().nonempty("O email é obrigatório"),
+    password: z.string().nonempty("A senha é obrigatória")
 });
 
-export type ILoginFormData = z.infer<typeof loginFormSchema>;
+export type TLoginFormData = z.infer<typeof loginFormSchema>;

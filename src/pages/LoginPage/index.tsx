@@ -9,7 +9,7 @@ export const LoginPage = () => {
             </div>
             <div>
                 <LoginForm />
-                <Link to="/register">Cadastre=se</Link>
+                <Link to="/register">Cadastre-se</Link>
             </div>
         </>
     )
