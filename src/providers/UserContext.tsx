@@ -47,7 +47,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
                 api.defaults.headers.common.authorization = `Bearer ${token}`;
                 const response = await api.get<IUser>(`/users/${userId}`);
                 setUser(response.data);
-                // navigate("/dashboard");
+                navigate("/dashboard");
             } catch (error) {
                 localStorage.removeItem("@TOKEN");
                 localStorage.removeItem("@USERID");
@@ -63,7 +63,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
             localStorage.setItem("@TOKEN", response.data.acessToken);
             localStorage.setItem("@USERID", response.data.user.id);
             setUser(response.data.user);
-            // navigate("/dashboard");
+            navigate("/dashboard");
         } catch (error) {
             console.log(error);
         } finally {
