@@ -1,9 +1,9 @@
+import { RoutesMain } from "./routes/RoutesMain";
+
 function App() {
 
   return (
-    <div className="App">
-      
-    </div>
+      <RoutesMain />
   )
 }
 
