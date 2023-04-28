@@ -1,7 +1,8 @@
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
-import { ILoginFormData } from "../components/Form/LoginForm/loginFormSchema";
+import { TLoginFormData } from "../components/Form/LoginForm/loginFormSchema";
+import { TRegisterFormData } from "../components/Form/RegisterForm/registerFormSchema";
 
 interface IUserProviderProps {
     children: React.ReactNode;
@@ -9,19 +10,27 @@ interface IUserProviderProps {
 
 interface IUserContext {
     user: IUser | null,
-    userLogin: (formData: ILoginFormData, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>
+    userLogin: (formData: TLoginFormData, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>,
+    userRegister: (formData: TRegisterFormData, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>,
+    userLogout: () => void
 }
 
 interface IUser {
     id: string,
     name: string,
-    email: string
+    email: string,
 }
 
 interface IUserLoginResponse {
     acessToken: string,
     user: IUser,
 }
+
+interface IUserRegisterResponse {
+    acessToken: string,
+    user: IUser,
+}
+
 
 export const UserContext = createContext({} as IUserContext);
 
@@ -47,19 +56,39 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         token && userId ? userAutoLogin() : null;
     }, [])
 
-    const userLogin = async (formData: ILoginFormData, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => {
-        try{
+    const userLogin = async (formData: TLoginFormData, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => {
+        try {
             setLoading(true);
             const response = await api.post<IUserLoginResponse>("/login", formData);
-            localStorage.setItem("@TOKEN", response.data.acessToken)
-            localStorage.setItem("@USERID", response.data.user.id)
-            setUser(response.data.user)
-            // navigate("/dashboard")
-        } catch(error){
+            localStorage.setItem("@TOKEN", response.data.acessToken);
+            localStorage.setItem("@USERID", response.data.user.id);
+            setUser(response.data.user);
+            // navigate("/dashboard");
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const userRegister = async (formData: TRegisterFormData, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => {
+        try {
+            setLoading(true);
+            await api.post<IUserRegisterResponse>("/register", formData)
+            navigate("/")
+        } catch (error) {
             console.log(error)
-        } finally{
+        } finally {
             setLoading(false)
         }
     }
-    return <UserContext.Provider value={{user, userLogin}}>{children}</UserContext.Provider>
+
+    const userLogout = () => {
+        localStorage.removeItem("@TOKEN");
+        localStorage.removeItem("@USERID");
+        setUser(null);
+        navigate("/");
+    }
+
+    return <UserContext.Provider value={{ user, userLogin, userRegister, userLogout }}>{children}</UserContext.Provider>
 }

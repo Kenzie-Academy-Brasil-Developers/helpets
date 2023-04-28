@@ -1,29 +1,28 @@
 import { useContext, useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod"
+import { zodResolver } from "@hookform/resolvers/zod";
 import { UserContext } from "../../../providers/UserContext";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ILoginFormData, loginFormSchema } from "./loginFormSchema";
+import { TLoginFormData, loginFormSchema } from "./loginFormSchema";
 import { Input } from "../Input";
 
 export const LoginForm = () => {
     const [loading, setLoading] = useState(false);
     const { userLogin } = useContext(UserContext);
-    const { register, handleSubmit, formState: { errors } } = useForm<ILoginFormData>({
+    const { register, handleSubmit, formState: { errors } } = useForm<TLoginFormData>({
         resolver: zodResolver(loginFormSchema),
     })
 
-    const submit: SubmitHandler<ILoginFormData> = (formData) => {
+    const submit: SubmitHandler<TLoginFormData> = (formData) => {
         userLogin(formData, setLoading)
     }
     return (
         <form onSubmit={handleSubmit(submit)}>
-            <Input type="email" {...register("email")} disabled={loading} error={errors.email} />
-            <Input type="password" {...register("password")} disabled={loading} error={errors.password} />
+            <Input label="E-mail" type="email" {...register("email")} disabled={loading} error={errors.email} />
+            <Input label="Senha" type="password" {...register("password")} disabled={loading} error={errors.password} />
             <button type="submit" disabled={loading}>
                 {loading ? "Entrando..." : "Entrar"}
             </button>
         </form>
     )
 }
-// export { ILoginFormData };
 
