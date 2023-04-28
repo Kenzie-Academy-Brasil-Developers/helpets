@@ -17,8 +17,8 @@ export const LoginForm = () => {
     }
     return (
         <form onSubmit={handleSubmit(submit)}>
-            <Input type="email" {...register("email")} disabled={loading} error={errors.email} />
-            <Input type="password" {...register("password")} disabled={loading} error={errors.password} />
+            <Input label="E-mail" type="email" {...register("email")} disabled={loading} error={errors.email} />
+            <Input label="Senha" type="password" {...register("password")} disabled={loading} error={errors.password} />
             <button type="submit" disabled={loading}>
                 {loading ? "Entrando..." : "Entrar"}
             </button>
