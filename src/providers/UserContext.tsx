@@ -22,12 +22,12 @@ interface IUser {
 }
 
 interface IUserLoginResponse {
-    acessToken: string,
+    accessToken: string,
     user: IUser,
 }
 
 interface IUserRegisterResponse {
-    acessToken: string,
+    accessToken: string,
     user: IUser,
 }
 
@@ -60,7 +60,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         try {
             setLoading(true);
             const response = await api.post<IUserLoginResponse>("/login", formData);
-            localStorage.setItem("@TOKEN", response.data.acessToken);
+            localStorage.setItem("@TOKEN", response.data.accessToken);
             localStorage.setItem("@USERID", response.data.user.id);
             setUser(response.data.user);
             navigate("/dashboard");

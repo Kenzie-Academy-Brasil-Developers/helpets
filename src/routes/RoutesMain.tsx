@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { LoginPage } from "../pages/LoginPage";
 import { RegisterPage } from "../pages/RegisterPage";
 import { ProtectedRoutes } from "../components/ProtectedRoutes";
-import { DashboardPage } from "../pages/Dahsboard";
+import { DashboardPage } from "../pages/Dashboard";
 
 export const RoutesMain = () => {
     return(
