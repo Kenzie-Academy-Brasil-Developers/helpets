@@ -1,9 +1,9 @@
-import { useContext } from "react"
-import { OngsContext } from "../../providers/OngsContext"
-import OngsCard from "./OngCard"
+import { useContext } from "react";
+import { OngsContext } from "../../providers/OngsContext";
+import OngsCard from "./OngCard";
 
 
-const OngsList = () => {
+export const OngsList = () => {
     const { listCard } = useContext(OngsContext) 
 
     return(
@@ -15,8 +15,5 @@ const OngsList = () => {
         </ul>
         
         </>
-
     )
 }
-
-export default OngsList
