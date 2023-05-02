@@ -4,6 +4,7 @@ import { UserContext } from "../../../providers/UserContext"
 import { DeleteModal } from "../../Modal/DeleteModal"
 import { EditModal } from "../../Modal/EditModal"
 import { DonateModal } from "../../Modal/DonateModal"
+import { Link } from "react-router-dom"
 
 interface ICard {
     ong: IOngs
@@ -34,7 +35,7 @@ const OngsCard = ({ ong }: ICard) => {
                     </>
                 ) : (
                     <>
-                        <button>Saiba mais</button>
+                        <Link to={"/saibaMais/" + ong.name}>Saiba mais</Link>
                         <button onClick={() => setIsDonateModalOpen(true)}>Doe Aqui</button>
                         {isDonateModalOpen && <DonateModal ong={ong} onClose={() => setIsDonateModalOpen(false)} />}
                     </>
@@ -44,4 +45,4 @@ const OngsCard = ({ ong }: ICard) => {
     )
 }
 
-export default OngsCard;
+export default OngsCard
