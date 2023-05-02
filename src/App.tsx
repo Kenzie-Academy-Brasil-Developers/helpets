@@ -1,4 +1,5 @@
 import { RoutesMain } from "./routes/RoutesMain";
+import "./globalStyles.css";
 
 function App() {
 
