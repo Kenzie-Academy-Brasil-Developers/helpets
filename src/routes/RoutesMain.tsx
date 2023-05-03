@@ -1,20 +1,30 @@
 import { Route, Routes } from "react-router-dom";
+import { ProtectedRoutesPublic } from "../components/ProtectedRoutes/ProtectedRoutesPublic";
 import { LoginPage } from "../pages/LoginPage";
 import { RegisterPage } from "../pages/RegisterPage";
-import { ProtectedRoutes } from "../components/ProtectedRoutes";
+import { ProtectedRoutesPrivate } from "../components/ProtectedRoutes/ProtectedRoutesPrivate";
 import { DashboardPage } from "../pages/Dashboard";
 import { LearnMore } from "../pages/LearnMore";
 
 export const RoutesMain = () => {
+    const path = location.pathname;
 
     return(
         <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/dashboard" element={<ProtectedRoutes />}>
+            <Route path="/" element={<ProtectedRoutesPublic />}>
+                <Route index element={<LoginPage />}/>
+            </Route>
+            <Route path="/register" element={<ProtectedRoutesPublic />}>
+                <Route index element={<RegisterPage />}/>
+            </Route>
+            
+            <Route path="/dashboard" element={<ProtectedRoutesPrivate />}>
                 <Route index element={<DashboardPage />}/>
             </Route>
-            <Route path="/saibaMais/:name" element={<LearnMore />}/>
+            <Route path="/saibaMais/:name" element={<ProtectedRoutesPrivate />}>
+                <Route index element={<LearnMore />}/>
+            </Route>
+
         </Routes>
     )
 }

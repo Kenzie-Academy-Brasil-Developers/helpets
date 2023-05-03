@@ -39,22 +39,28 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     const [user, setUser] = useState<IUser | null>(null);
     const navigate = useNavigate();
 
+    const path = location.pathname;
     useEffect(() => {
         const token = localStorage.getItem("@TOKEN")
         const userId = localStorage.getItem("@USERID")
+        
+        
 
         const userAutoLogin = async () => {
             try {
+                if(!token || !userId){
+                    throw new Error()
+                }
                 api.defaults.headers.common.authorization = `Bearer ${token}`;
                 const response = await api.get<IUser>(`/users/${userId}`);
                 setUser(response.data);
-                navigate("/dashboard");
+                navigate(path)
             } catch (error) {
                 localStorage.removeItem("@TOKEN");
                 localStorage.removeItem("@USERID");
             }
         }
-        token && userId ? userAutoLogin() : null;
+        userAutoLogin();
     }, [])
 
     const userLogin = async (formData: TLoginFormData, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => {
