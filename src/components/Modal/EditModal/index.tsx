@@ -13,7 +13,7 @@ interface IEdit {
 
 export const EditModal = ({ ong, onClose }: IEdit) => {
     const { editOng } = useContext(OngsContext)
-    const { register, handleSubmit } = useForm<TEditFormData>({
+    const { register, handleSubmit, formState: {errors} } = useForm<TEditFormData>({
         resolver: zodResolver(editFormSchema)
     })
     const [loading, setLoading] = useState(false)
@@ -29,8 +29,8 @@ export const EditModal = ({ ong, onClose }: IEdit) => {
                 <button onClick={onClose}>X</button>
             </div>
             <form onSubmit={handleSubmit(submit)}>
-                <Input label="Nome:" defaultValue={ong?.name} {...register("name")} disabled={loading} />
-                <Textarea label="Descrição" defaultValue={ong?.description} {...register("description")} disabled={loading} />
+                <Input label="Nome:" defaultValue={ong?.name} {...register("name")} disabled={loading} error={errors.name} />
+                <Textarea label="Descrição" defaultValue={ong?.description} {...register("description")} disabled={loading} error={errors.description}/>
                 <button type="submit" disabled={loading}>
                     {loading ? "Editando ONG..." : "Editar ONG"}
                 </button>
