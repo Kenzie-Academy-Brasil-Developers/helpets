@@ -12,6 +12,8 @@ export const DashboardMainHeader = () => {
         {isAddModalOpen && <AddModal onClose={() => setIsAddModalOpen(false)} />}
         </>
     ) : (
-        <p>Escolha uma ONG e doe qualquer quantia, sua doação faz a diferença.</p>
+        <p className="mt-[2.75rem] mb-[2.75rem] text-center text-[1.25rem]">
+            Escolha uma ONG e doe qualquer quantia, sua doação faz a diferença.
+        </p>
     )
 }

@@ -9,7 +9,7 @@ export const DashboardPage = () => {
     return (
         <>
             <Header />
-            <main>
+            <main className="container">
                 <DashboardMainHeader />
                 <OngsList />
             </main>

@@ -8,7 +8,7 @@ export const OngsList = () => {
 
     return(
         <>
-        <ul>
+        <ul className="flex flex-wrap gap-[3.3125rem] justify-center mb-[2.75rem]">
             {listCard.map((ong) =>{
                 return <OngsCard ong={ong} key={ong.id} />
             })}

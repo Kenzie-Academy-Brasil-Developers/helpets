@@ -6,15 +6,17 @@ import { Link } from "react-router-dom"
 export const Header = () => {
     const { userLogout } = useContext(UserContext)
     return (
-        <header>
-            <Link to={"/dashboard"}>
-                <img src={logo} alt="" />
-            </Link>
-            <div>
-                <input type="search" />
-                <button onClick={() => userLogout()}>
-                    <img src={logout} alt="" />
-                </button>
+        <header className="bg-black h-[6.8125rem]">
+            <div className="container flex justify-between h-full items-center">
+                <Link to={"/dashboard"}>
+                    <img src={logo} alt=""/>
+                </Link>
+                <div>
+                    <input type="search" className="mr-[0.9375rem] w-[17.4375rem] h-[2.4375rem] rounded-[20px] pl-[0.625rem] border border-[#3AB8C7] bg-transparent autofill:bg-transparent text-white" />
+                    <button onClick={() => userLogout()}>
+                        <img src={logout} alt="" />
+                    </button>
+                </div>
             </div>
         </header>
     )
