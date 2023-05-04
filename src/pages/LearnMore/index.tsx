@@ -4,7 +4,6 @@ import { Maps } from "../../components/Maps"
 import { IOngs, OngsContext } from "../../providers/OngsContext";
 import { useParams } from "react-router-dom";
 import { useContext, useState, useEffect } from "react"
-import { number } from "zod";
 
 export const LearnMore = () => {
   const { listCard } = useContext(OngsContext);
@@ -18,12 +17,13 @@ export const LearnMore = () => {
     }
 
   }, [listCard])
+
   return (
     <>
       {listCard &&
         <>
           <HeaderLearnMore />
-          <main>
+          <main className="container">
             <CardLearnMore ong={ong} />
             <Maps locationName={ong.name} />
           </main>
