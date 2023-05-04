@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 export const Header = () => {
     const { userLogout } = useContext(UserContext)
     return (
-        <header className="bg-black h-[6.8125rem]">
+        <header className="bg-black h-[6.8125rem] w-full">
             <div className="container flex justify-between h-full items-center">
                 <Link to={"/dashboard"}>
                     <img src={logo} alt="" />
