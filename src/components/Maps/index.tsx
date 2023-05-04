@@ -35,7 +35,7 @@ type Props = {
 
 
     return (
-      <div className="map">
+      <div className="map border-4 border-[#3AB8C7] rounded-lg h-96 mb-16">
         <LoadScript
           googleMapsApiKey={"AIzaSyArOse9phGmQ0Clubc59tm-QTv3GJrX7UY"}
           libraries={["places"]}
