@@ -17,7 +17,7 @@ const OngsCard = ({ ong }: ICard) => {
     const [isDonateModalOpen, setIsDonateModalOpen] = useState(false)
 
     return (
-        <li className="bg-[#D9D9D9] w-[20rem] h-[20.3125rem] rounded-[8px]">
+        <li className="bg-[#D9D9D9] w-full h-[20.3125rem] rounded-[8px]">
             <div className="flex justify-center items-center max-h-[9.75rem] min-h-[12.5rem] p-[5rem] border border-black">
                 <img src={ong.logo} alt={ong.name} className="h-[7rem]" />
             </div>

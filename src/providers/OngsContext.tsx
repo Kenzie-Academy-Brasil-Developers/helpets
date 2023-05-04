@@ -13,6 +13,10 @@ interface IOngsContext {
     addOng: (formData: TAddFormData, setLoading: React.Dispatch<React.SetStateAction<boolean>>, onClose: () => void) => Promise<void>,
     removeOng: (ongId: Number, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>,
     editOng: (formData: TEditFormData, setLoading: React.Dispatch<React.SetStateAction<boolean>>, ongId: Number, onClose: () => void) => Promise<void>,
+    searchValue: string,
+    filteredOng: IOngs[],
+    handleInput: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void,
 }
 export interface IOngs {
     name: string,
@@ -29,6 +33,10 @@ export const OngsProvider = ({ children }: IOngsContextProviderProps) => {
     const [listCard, setListCard] = useState<IOngs[]>([])
     const [loading, setLoading] = useState(false)
     const [selectedOng, setSelectedOng] = useState<IOngs | null>(null)
+    const [searchValue, setSearchValue] = useState("")
+    const [searchedOng, setSearchedOng] = useState("")
+    const [filteredOng, setFilteredOng] = useState<IOngs[]>([])
+    const [formSubmited, setFormSubmited] = useState(false)
 
     useEffect(() => {
         const token = localStorage.getItem("@TOKEN")
@@ -97,9 +105,24 @@ export const OngsProvider = ({ children }: IOngsContextProviderProps) => {
         }
     }
 
+    const handleSearch = () => {
+        const filteredOngs = listCard.filter((ong) => (
+            searchValue === "" || ong.name.toLowerCase().includes(searchValue.toLowerCase()))
+            )
+            setFilteredOng(filteredOngs)
+            setSearchedOng(searchValue)
+            setFormSubmited(true)
+    }
+    const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchValue(event.target.value)
+    }
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        handleSearch()
+    }
 
     return(
-        <OngsContext.Provider value={{ listCard, addOng, removeOng, ong: selectedOng, editOng }}>
+        <OngsContext.Provider value={{ listCard, addOng, removeOng, ong: selectedOng, editOng, filteredOng, handleSubmit, searchValue, handleInput }}>
             {children}
         </OngsContext.Provider>
     )
