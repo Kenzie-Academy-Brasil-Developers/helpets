@@ -20,7 +20,7 @@ interface IOngsContext {
 }
 export interface IOngs {
     name: string,
-    id: Number,
+    id: number,
     description: string,
     link: string,
     logo: string,

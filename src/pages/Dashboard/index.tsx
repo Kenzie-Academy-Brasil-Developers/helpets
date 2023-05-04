@@ -8,7 +8,7 @@ export const DashboardPage = () => {
     return (
         <>
             <Header />
-            <main className="container">
+            <main className="container mobile:mb-4">
                 <DashboardMainHeader />
                 <OngsList />
             </main>
