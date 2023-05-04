@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { IOngs } from "../../../providers/OngsContext"
 import { Input } from "../../Form/Input"
+import { toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 interface IDonate{
     ong: IOngs,
@@ -11,8 +13,8 @@ export const DonateModal = ({ ong, onClose }: IDonate) => {
     const [donationValue, setDonationValue] = useState("")
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        alert(`Obrigado por doar R$${donationValue} para a ONG ${ong.name}`)
         onClose()
+        toast(`Obrigado por doar R$ ${donationValue} para a ONG ${ong.name}`)
     }
 
     const handleDonationValue = (event: React.ChangeEvent<HTMLInputElement>) => {
