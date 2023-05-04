@@ -3,12 +3,7 @@ import { UserContext } from "../../providers/UserContext";
 import { Navigate, Outlet } from "react-router-dom";
 
 export const ProtectedRoutesPublic = () => {
-  const { user } = useContext(UserContext);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
+  const { user, isLoading } = useContext(UserContext);
 
   return (
     <>
