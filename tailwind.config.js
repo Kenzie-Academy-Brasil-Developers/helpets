@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      'mobile': {max: '580px'}
+    },
     extend: {
       backgroundColor: {
         'color-01': 'rgba(00, 00, 00, 0.7)', 

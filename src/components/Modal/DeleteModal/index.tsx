@@ -11,18 +11,22 @@ export const DeleteModal = ({ ong, onClose }: IDelete) => {
     const { removeOng } = useContext(OngsContext)
 
     return (
-        <div role="dialog">
-            <div>
-                <p>Quer mesmo deletar essa ONG?</p>
-                <button onClick={onClose}>X</button>
+        <div className="h-full w-full bg-color-01 fixed top-0 left-0 flex items-center justify-center">
+            <div role="dialog" className="w-[32.0625rem] h-[23.9325rem] bg-color-02 rounded-[10px] py-[1.75rem] px-[3.6875rem] border border-[#3AB8C7]">
+                <div className="flex justify-between mb-[1.5rem] text-white text-[1.25rem]">
+                    <p>
+                        Quer mesmo deletar essa ONG?
+                    </p>
+                    <button onClick={onClose} className="text-[1.5rem]">X</button>
+                </div>
+                <div className="flex items-center min-h-[11.4856rem]">
+                    <img src={ong?.logo} alt={`Logo da ONG ${ong?.name}`} className="mr-[1rem] max-w-[11.625rem]" />
+                    <p className="text-white text-[1.125rem]">{ong?.name}</p>
+                </div>
+                <button type="submit" disabled={loading} onClick={() => removeOng(ong.id, setLoading)} className="w-full bg-[#3AB8C7] flex justify-center items-center h-[3rem] rounded-[1.25rem] text-white justify-around mt-7 mb-20">
+                    {loading ? "Deletando ONG..." : "Deletar ONG"}
+                </button>
             </div>
-            <div>
-                <img src={ong?.logo} alt={`Logo da ONG ${ong?.name}`} />
-                <p>{ong?.name}</p>
-            </div>
-            <button type="submit" disabled={loading} onClick={() => removeOng(ong.id, setLoading)}>
-                {loading ? "Deletando ONG..." : "Deletar ONG"}
-            </button>
         </div>
     )
 }
