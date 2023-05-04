@@ -23,22 +23,24 @@ export const AddModal = ({ onClose }: IAddModalProps) => {
 
 
     return (
-        <div>
-        <div role="dialog">
-            <div>
-                <p>Adicionar uma nova ONG:</p>
-                <button onClick={onClose}>X</button>
+        <div className="h-full w-full bg-color-01 fixed top-0 left-0 flex items-center justify-center">
+            <div role="dialog" className="w-[32.0625rem] h-[39.625rem] bg-color-02 rounded-[10px] py-[1.75rem] px-[3.6875rem] border border-[#3AB8C7]">
+                <div className="flex justify-between mb-[1.5rem]">
+                    <p>
+                        Adicionar uma nova ONG:
+                    </p>
+                    <button onClick={onClose} className="text-[1.5rem]">X</button>
+                </div>
+                <form onSubmit={handleSubmit(submit)}>
+                    <Input label="URL da imagem:" type="text" {...register("logo")} disabled={loading} error={errors.logo} />
+                    <Input label="Nome:" type="text" {...register("name")} disabled={loading} error={errors.name} />
+                    <Textarea label="Descrição:" {...register("description")} disabled={loading} error={errors.description} />
+                    <Input label="Link do site:" type="text" {...register("link")} disabled={loading} error={errors.link} />
+                    <button type="submit" disabled={loading} className="w-full bg-[#3AB8C7] flex justify-center items-center h-[3rem] rounded-[1.25rem] text-white justify-around mt-7 mb-20">
+                        {loading ? "Adicionando ONG..." : "Adicionar ONG"}
+                    </button>
+                </form>
             </div>
-            <form onSubmit={handleSubmit(submit)}>
-                <Input label="URL da imagem:" type="text" {...register("logo")} disabled={loading} error={errors.logo} />
-                <Input label="Nome:" type="text" {...register("name")} disabled={loading} error={errors.name} />
-                <Textarea label="Descrição:" {...register("description")} disabled={loading} error={errors.description} />
-                <Input label="Link do site:" type="text" {...register("link")} disabled={loading} error={errors.link} />
-                <button type="submit" disabled={loading}>
-                    {loading ? "Adicionando ONG..." : "Adicionar ONG"}
-                </button>
-            </form>
-        </div>
         </div>
     )
 }

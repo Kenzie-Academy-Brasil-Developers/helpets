@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom"
 import logo from "../../assets/logo.svg"
-import returnPage from "../../assets/returnPage.svg"
+import { IoReturnDownBackSharp } from "react-icons/io5"
 
 export const HeaderLearnMore = () => {
   return (
-    <header>
-      <img src={logo} alt="logo do site" />
-      <Link to="/Dashboard">
-        <img src={returnPage} alt="" />
-      </Link>
-    </header>
+      <header className="bg-black h-[6.8125rem] w-full">
+        <div className="container flex justify-between h-full items-center">
+            <Link to={"/dashboard"}>
+                <img src={logo} alt="" />
+            </Link>
+            <Link to="/dashboard">
+                <IoReturnDownBackSharp className="text-white w-7 h-7" />
+            </Link>
+        </div>
+      </header>
   )
 }
