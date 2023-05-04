@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import logo from "../../assets/logo.svg"
 import returnPage from "../../assets/returnPage.svg"
+import { IoReturnDownBackSharp } from "react-icons/io5"
 
 export const HeaderLearnMore = () => {
   return (

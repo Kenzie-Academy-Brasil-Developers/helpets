@@ -1,20 +1,12 @@
-import { useContext } from "react"
 import { Link, useParams } from "react-router-dom"
-
-import { OngsContext } from "../../providers/OngsContext"
 import { IOngs } from "../../providers/OngsContext"
-
-import { HeaderLearnMore } from "../HeaderLearnMore";
-
-export const CardLearnMore = () => {
-  const { listCard } = useContext(OngsContext);
-
-  const { name } = useParams()
-  const ong: IOngs = listCard.find((ong) => ong?.name === name)!
-
+interface ICardLearnMoreProps{
+  ong: IOngs
+}
+export const CardLearnMore = ({ong}: ICardLearnMoreProps) => {
+  
   return (
     <>
-      <HeaderLearnMore />
       <section className="container">
         <div className="flex">
           <div>
