@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { OngsContext } from "../../../providers/OngsContext"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { SubmitHandler, useForm } from "react-hook-form"
@@ -23,6 +23,7 @@ export const AddModal = ({ onClose }: IAddModalProps) => {
 
 
     return (
+        <div>
         <div role="dialog">
             <div>
                 <p>Adicionar uma nova ONG:</p>
@@ -37,6 +38,7 @@ export const AddModal = ({ onClose }: IAddModalProps) => {
                     {loading ? "Adicionando ONG..." : "Adicionar ONG"}
                 </button>
             </form>
+        </div>
         </div>
     )
 }
