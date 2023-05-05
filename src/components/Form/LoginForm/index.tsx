@@ -4,6 +4,7 @@ import { UserContext } from "../../../providers/UserContext";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { TLoginFormData, loginFormSchema } from "./loginFormSchema";
 import { Input } from "../Input";
+import { ClipLoader } from "react-spinners";
 
 export const LoginForm = () => {
     const [loading, setLoading] = useState(false);
@@ -20,7 +21,7 @@ export const LoginForm = () => {
             <Input label="E-mail" type="email" {...register("email")} disabled={loading} error={errors.email} />
             <Input label="Senha" type="password" {...register("password")} disabled={loading} error={errors.password} />
             <button type="submit" disabled={loading} className="mt-[0.625rem] bg-color-04 w-[10.25rem] rounded-[20px] h-[3rem] text-white self-center">
-                {loading ? "Entrando..." : "Entrar"}
+                {loading ? <ClipLoader color="#ffffff" size={20} /> : "Entrar"}
             </button>
         </form>
     )

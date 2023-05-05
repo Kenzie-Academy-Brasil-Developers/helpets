@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { TAddFormData, addFormSchema } from "./addModalSchema"
 import { Input } from "../../Form/Input"
 import { Textarea } from "../../Form/Textarea"
+import { ClipLoader } from "react-spinners"
 
 interface IAddModalProps {
     onClose: () => void,
@@ -37,7 +38,7 @@ export const AddModal = ({ onClose }: IAddModalProps) => {
                     <Textarea label="Descrição:" {...register("description")} disabled={loading} error={errors.description} />
                     <Input label="Link do site:" type="text" {...register("link")} disabled={loading} error={errors.link} />
                     <button type="submit" disabled={loading} className="w-full bg-[#3AB8C7] flex justify-center items-center h-[3rem] rounded-[1.25rem] text-white justify-around mt-7 mb-20">
-                        {loading ? "Adicionando ONG..." : "Adicionar ONG"}
+                        {loading ? <ClipLoader color="#ffffff" size={20}/> : "Adicionar ONG"}
                     </button>
                 </form>
             </div>
