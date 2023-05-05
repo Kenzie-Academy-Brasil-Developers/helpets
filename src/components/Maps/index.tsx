@@ -38,7 +38,7 @@ type Props = {
       <div className="map border-4 border-[#3AB8C7] rounded-lg h-96 mb-16">
         <LoadScript
           googleMapsApiKey={"AIzaSyArOse9phGmQ0Clubc59tm-QTv3GJrX7UY"}
-          libraries={["places"]}
+          libraries={["places"]} loadingElement={<p> Carregando Maps</p>}
         >
           <GoogleMap
             onLoad={onMapLoad}

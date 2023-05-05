@@ -8,13 +8,14 @@ import { Link } from "react-router-dom"
 
 interface ICard {
     ong: IOngs
+    setIsDeleteModalOpen: React.Dispatch<React.SetStateAction<IOngs | null>>
+    setIsEditModalOpen: React.Dispatch<React.SetStateAction<IOngs | null>>
+    setIsDonateModalOpen: React.Dispatch<React.SetStateAction<IOngs | null>>
+
 }
 
-const OngsCard = ({ ong }: ICard) => {
+const OngsCard = ({ ong, setIsDeleteModalOpen, setIsEditModalOpen, setIsDonateModalOpen }: ICard) => {
     const { user } = useContext(UserContext)
-    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
-    const [isEditModalOpen, setIsEditModalOpen] = useState(false)
-    const [isDonateModalOpen, setIsDonateModalOpen] = useState(false)
 
     return (
         <li className="bg-[#D9D9D9] w-full h-[20.3125rem] rounded-[8px]">
@@ -28,17 +29,16 @@ const OngsCard = ({ ong }: ICard) => {
                 <div className="flex gap-[1.4375rem]">
                     {user?.isAdmin ? (
                         <>
-                            <button onClick={() => setIsEditModalOpen(true)} className="bg-white w-[7.375rem] flex justify-center items-center h-[2.125rem] rounded-lg text-[#3AB8C7]">Editar</button>
-                            {isEditModalOpen && <EditModal ong={ong} onClose={() => setIsEditModalOpen(false)} />}
-                            <button onClick={() => setIsDeleteModalOpen(true)} className="bg-[#3AB8C7] w-[7.375rem] flex justify-center items-center h-[2.125rem] rounded-lg text-white">Excluir</button>
-                            {isDeleteModalOpen && <DeleteModal ong={ong} onClose={() => setIsDeleteModalOpen(false)} />}
-
+                            <button onClick={() => setIsEditModalOpen(ong)} className="bg-white w-[7.375rem] flex justify-center items-center h-[2.125rem] rounded-lg text-[#3AB8C7]">Editar</button>
+                           
+                            <button onClick={() => setIsDeleteModalOpen(ong)} className="bg-[#3AB8C7] w-[7.375rem] flex justify-center items-center h-[2.125rem] rounded-lg text-white">Excluir</button>
+                           
                         </>
                     ) : (
                         <>
                             <Link to={"/saibaMais/" + ong.name} className="bg-white w-[7.375rem] flex justify-center items-center h-[2.125rem] rounded-lg text-[#3AB8C7]">Saiba mais</Link>
-                            <button onClick={() => setIsDonateModalOpen(true)} className="bg-[#3AB8C7] w-[7.375rem] flex justify-center items-center h-[2.125rem] rounded-lg text-white">Doe Aqui</button>
-                            {isDonateModalOpen && <DonateModal ong={ong} onClose={() => setIsDonateModalOpen(false)} />}
+                            <button onClick={() => setIsDonateModalOpen(ong)} className="bg-[#3AB8C7] w-[7.375rem] flex justify-center items-center h-[2.125rem] rounded-lg text-white">Doe Aqui</button>
+                            
                         </>
                     )}
                 </div>

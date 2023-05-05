@@ -23,7 +23,7 @@ export const EditModal = ({ ong, onClose }: IEdit) => {
     }
 
     return (
-        <div className="h-full w-full bg-color-01 fixed top-0 left-0 flex items-center justify-center">
+        <div className="h-full w-full bg-color-01 fixed top-0 left-0 flex items-center justify-center z-[1000]">
             <div role="dialog" className="w-[32.0625rem] h-[28.9325rem] bg-color-02 rounded-[10px] py-[1.75rem] px-[3.6875rem] border border-[#3AB8C7]">
                 <div className="flex justify-between mb-[1.5rem] text-white text-[1.25rem]">
                     Editar ONG:
