@@ -5,6 +5,7 @@ import { Input } from "../../Form/Input"
 import { Textarea } from "../../Form/Textarea"
 import { TEditFormData, editFormSchema } from "./editModalSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { ClipLoader } from "react-spinners"
 
 interface IEdit {
     ong: IOngs,
@@ -33,7 +34,7 @@ export const EditModal = ({ ong, onClose }: IEdit) => {
                     <Input label="Nome:" defaultValue={ong?.name} {...register("name")} disabled={loading} error={errors.name} />
                     <Textarea label="Descrição" defaultValue={ong?.description} {...register("description")} disabled={loading} error={errors.description}/>
                     <button type="submit" disabled={loading} className="w-full bg-[#3AB8C7] flex justify-center items-center h-[3rem] rounded-[1.25rem] text-white justify-around mt-7 mb-20">
-                        {loading ? "Editando ONG..." : "Editar ONG"}
+                        {loading ? <ClipLoader color="#ffffff" size={20}/> : "Editar ONG"}
                     </button>
                 </form>
             </div>

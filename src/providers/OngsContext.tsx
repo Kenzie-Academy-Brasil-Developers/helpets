@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { TAddFormData } from "../components/Modal/AddModal/addModalSchema";
 import { TEditFormData } from "../components/Modal/EditModal/editModalSchema";
+import { toast } from "react-toastify";
 
 interface IOngsContextProviderProps {
     children: React.ReactNode
@@ -50,7 +51,7 @@ export const OngsProvider = ({ children }: IOngsContextProviderProps) => {
                 setListCard(data)
             }
             catch(error) {
-                console.log(error)
+                console.error(error)
             } 
         }
         ongs()
@@ -67,7 +68,7 @@ export const OngsProvider = ({ children }: IOngsContextProviderProps) => {
             onClose()
         }
         catch(error){
-            console.log(error)
+            toast("Não foi possível adicionar ONG, tente novamente")
         } finally{
             setLoading(false)
         }
@@ -81,9 +82,8 @@ export const OngsProvider = ({ children }: IOngsContextProviderProps) => {
             await api.delete(`/ongs/${ongId}`)
             const newOngsList = listCard.filter(currentOng => currentOng.id !== ongId)
             setListCard(newOngsList)
-            console.log('Ong removida com sucesso')
         } catch (error){
-            console.log(error)
+            toast("Não foi possível remover ONG, tente novamente")
         } finally{
             setLoading(false)
         }
@@ -99,7 +99,7 @@ export const OngsProvider = ({ children }: IOngsContextProviderProps) => {
             setListCard(updatedOng)
             onClose()
         } catch (error){
-            console.log(error)
+            toast("Não foi possível editar ONG, tente novamente")
         } finally{
             setLoading(false)
         }

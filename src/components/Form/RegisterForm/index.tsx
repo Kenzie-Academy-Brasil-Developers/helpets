@@ -4,6 +4,7 @@ import { UserContext } from "../../../providers/UserContext";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { TRegisterFormData, registerFormSchema } from "./registerFormSchema";
 import { Input } from "../Input";
+import { ClipLoader } from "react-spinners";
 
 export const RegisterForm = () => {
     const [loading, setLoading] = useState(false);
@@ -22,7 +23,7 @@ export const RegisterForm = () => {
             <Input label="Senha" type="password" {...register("password")} disabled={loading} error={errors.password} />
             <Input label="Confirmar senha" type="password" {...register("confirm")} disabled={loading} error={errors.confirm} />
             <button type="submit" disabled={loading} className="mt-[0.625rem] bg-color-04 w-[10.25rem] rounded-[20px] h-[3rem] text-white self-center">
-                {loading ? "Cadastrando" : "Cadastrar"}
+                {loading ? <ClipLoader color="#ffffff" size={20}/> : "Cadastrar"}
             </button>
         </form>
     )

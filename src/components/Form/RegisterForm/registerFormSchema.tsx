@@ -3,7 +3,7 @@ import { z } from "zod";
 export const registerFormSchema = z.object({
     name: z
         .string()
-        .min(3, "O nome é obrigatório e precisa conter pelo menos 3 caracteres"),
+        .min(3, "O nome é obrigatório"),
     email: z.string().nonempty("O e-mail é obrigatório").email("Forneça um e-mail válido"),
     password: z
         .string()

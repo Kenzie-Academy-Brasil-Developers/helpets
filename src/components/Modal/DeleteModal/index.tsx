@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import { IOngs, OngsContext } from "../../../providers/OngsContext"
+import { ClipLoader } from "react-spinners"
 
 interface IDelete {
     ong: IOngs,
@@ -24,7 +25,7 @@ export const DeleteModal = ({ ong, onClose }: IDelete) => {
                     <p className="text-white text-[1.125rem]">{ong?.name}</p>
                 </div>
                 <button type="submit" disabled={loading} onClick={() => removeOng(ong.id, setLoading)} className="w-full bg-[#3AB8C7] flex justify-center items-center h-[3rem] rounded-[1.25rem] text-white justify-around mt-7 mb-20">
-                    {loading ? "Deletando ONG..." : "Deletar ONG"}
+                    {loading ? <ClipLoader color="#ffffff" size={20}/> : "Deletar ONG"}
                 </button>
             </div>
         </div>

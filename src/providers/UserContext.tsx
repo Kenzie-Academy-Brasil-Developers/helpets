@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
 import { TLoginFormData } from "../components/Form/LoginForm/loginFormSchema";
 import { TRegisterFormData } from "../components/Form/RegisterForm/registerFormSchema";
+import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
+import { translateErrorMessage } from "../services/locales";
+import { Axios, AxiosError } from "axios";
 
 interface IUserProviderProps {
   children: React.ReactNode;
@@ -84,7 +88,9 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       setUser(response.data.user);
       navigate("/dashboard");
     } catch (error) {
-      console.log(error);
+      const errorMessage = translateErrorMessage((error as AxiosError).response?.data)
+      toast(errorMessage)
+      console.log(error)
     } finally {
       setLoading(false);
     }
@@ -99,7 +105,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       await api.post<IUserRegisterResponse>("/register", formData);
       navigate("/");
     } catch (error) {
-      console.log(error);
+      const errorMessage = translateErrorMessage((error as AxiosError).response?.data)
+      toast(errorMessage)
     } finally {
       setLoading(false);
     }
