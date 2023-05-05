@@ -16,8 +16,16 @@ export default {
         'color-04': '#3AB8C7',
         'color-05': 'rgba(0, 0, 0, 0.5)',
       }, 
-      backgroundImage: {
-        'image-main': "url('./src/assets/background-image.svg')",
+      animation: {
+        'change-background-image': 'change-background-image 15s infinite'
+      },
+      keyframes: {
+        'change-background-image': {
+          '0%': {backgroundImage: "url('./src/assets/background-image-1.jpg')" },
+          '30%': {backgroundImage: "url('./src/assets/background-image-2.jpg')"},
+          '60%': {backgroundImage: "url(./src/assets/background-image-3.jpg)"},
+          '100%': {backgroundImage: "url('./src/assets/background-image-4.jpg')"}
+        }
       }
     },
   },
