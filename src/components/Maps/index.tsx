@@ -1,5 +1,6 @@
 import { GoogleMap, LoadScript, StandaloneSearchBox, Marker } from "@react-google-maps/api";
 import React, { useCallback } from "react";
+import BeatLoader from "react-spinners/BeatLoader"
 
 declare global {
   interface Window {
@@ -35,10 +36,10 @@ type Props = {
 
 
     return (
-      <div className="map border-4 border-[#3AB8C7] rounded-lg h-96 mb-16">
+      <div className="map border-4 border-[#3AB8C7] rounded-lg h-96 mb-16 flex justify-center items-center ">
         <LoadScript
           googleMapsApiKey={"AIzaSyArOse9phGmQ0Clubc59tm-QTv3GJrX7UY"}
-          libraries={["places"]} loadingElement={<p> Carregando Maps</p>}
+          libraries={["places"]} loadingElement={<BeatLoader color="#3AB8C7" />}
         >
           <GoogleMap
             onLoad={onMapLoad}
