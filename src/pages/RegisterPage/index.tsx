@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export const RegisterPage = () => {
     return(
         <>
-        <div className="bg-image-main h-screen bg-cover flex justify-center items-center shadow-color-04 relative mobile:flex-col mobile:items-center mobile:pb-[3rem] mobile:h-full">
+        <div className="animate-change-background-image h-screen bg-cover flex justify-center items-center shadow-color-04 relative mobile:flex-col mobile:items-center mobile:pb-[3rem] mobile:h-full">
             <img src={logo} className="fixed top-[65px] left-[85px] mobile:top-[25px] mobile:left-[40%] mobile:absolute"></img>
             <div>
                 <p className="text-white text-[1.5rem] max-w-[25.75rem] text-center mr-40 mobile:mr-0 mobile:mt-[8rem] mobile:text-base mobile:mb-[3rem]">
