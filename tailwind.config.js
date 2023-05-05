@@ -17,7 +17,7 @@ export default {
         'color-05': 'rgba(0, 0, 0, 0.5)',
       }, 
       backgroundImage: {
-        'image-main': "url('./src/assets/background-image.jpg')",
+        'image-main': "url('./src/assets/background-image.svg')",
       }
     },
   },

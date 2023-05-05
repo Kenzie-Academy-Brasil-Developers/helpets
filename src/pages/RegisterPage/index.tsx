@@ -12,7 +12,7 @@ export const RegisterPage = () => {
                     "Antes de ter amado um animal, parte da nossa alma permanece desacordada" DOE!
                 </p>
             </div>
-            <div className="flex flex-col w-[25.75rem] bg-color-05 border border-[#3AB8C7] rounded-[20px] h-[41.25rem] pt-[2.875rem] pr-[2.875rem] pl-[2.875rem] shadow-[0_0px_32px_1px_#3AB8C7] mobile:pt-[1rem] mobile:pb-[1rem] mobile:w-full mobile:mx-12 mobile:h-[37rem] mobile:pt-8">
+            <div className="flex flex-col w-[25.75rem] bg-color-05 border border-[#3AB8C7] rounded-[20px] h-[41.25rem] pt-[2.875rem] pr-[2.875rem] pl-[2.875rem] shadow-[0_0px_32px_1px_#3AB8C7] mobile:pt-[1rem] mobile:pb-[1rem] mobile:w-[18rem] mobile:mx-12 mobile:h-[36rem] mobile:pt-8">
                 <h2 className="text-[2.5rem] text-white text-center mb-[1.125rem] mobile:text-2xl">
                     Cadastre-se
                 </h2>
