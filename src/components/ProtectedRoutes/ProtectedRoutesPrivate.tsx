@@ -4,12 +4,8 @@ import { Navigate, Outlet } from "react-router-dom";
 import { OngsProvider } from "../../providers/OngsContext";
 
 export const ProtectedRoutesPrivate = () => {
-  const { user } = useContext(UserContext);
-  const [isLoading, setIsLoading] = useState(true);
+  const { user, isLoading } = useContext(UserContext);
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
 
   return (
     <>
