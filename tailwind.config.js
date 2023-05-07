@@ -21,10 +21,10 @@ export default {
       },
       keyframes: {
         'change-background-image': {
-          '0%': {backgroundImage: "url('./src/assets/background-image-1.jpg')" },
-          '30%': {backgroundImage: "url('./src/assets/background-image-2.jpg')"},
-          '60%': {backgroundImage: "url('./src/assets/background-image-3.jpg')"},
-          '100%': {backgroundImage: "url('./src/assets/background-image-4.jpg')"}
+          '0%': {backgroundImage: "url('https://res.cloudinary.com/dr4yskhwv/image/upload/v1683491592/olga-ga-iRgbLpf50IE-unsplash_ibfcpt.jpg')" },
+          '30%': {backgroundImage: "url('https://res.cloudinary.com/dr4yskhwv/image/upload/v1683491883/background-image-2_anee1w.jpg')"},
+          '60%': {backgroundImage: "url('https://res.cloudinary.com/dr4yskhwv/image/upload/v1683491592/beautiful-endangered-american-jaguar-nature-habitat-panthera-onca-wild-brasil-brasilian-wildlife-pantanal-green-jungle-big-cats_zt48ki.jpg')"},
+          '100%': {backgroundImage: "url('https://res.cloudinary.com/dr4yskhwv/image/upload/v1683491591/parrot-g9842cb5fe_1280_uxtkaf.jpg')"}
         }
       }
     },
