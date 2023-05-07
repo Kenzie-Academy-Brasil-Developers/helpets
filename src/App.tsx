@@ -1,9 +1,10 @@
+import { RoutesMain } from "./routes/RoutesMain";
+import "./globalStyles.css";
+
 function App() {
 
   return (
-    <div className="App">
-      
-    </div>
+      <RoutesMain />
   )
 }
 
