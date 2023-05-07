@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .container {
     /* width: 75rem; */
     width: 80%;

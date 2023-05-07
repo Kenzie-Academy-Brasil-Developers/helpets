@@ -12,7 +12,7 @@ interface IOngsContext {
     listCard: IOngs[],
     ong: IOngs | null,
     addOng: (formData: TAddFormData, setLoading: React.Dispatch<React.SetStateAction<boolean>>, onClose: () => void) => Promise<void>,
-    removeOng: (ongId: Number, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>,
+    removeOng: (ongId: Number, setLoading: React.Dispatch<React.SetStateAction<boolean>>, onClose: () => void) => Promise<void>,
     editOng: (formData: TEditFormData, setLoading: React.Dispatch<React.SetStateAction<boolean>>, ongId: Number, onClose: () => void) => Promise<void>,
     searchValue: string,
     filteredOng: IOngs[],
@@ -74,7 +74,7 @@ export const OngsProvider = ({ children }: IOngsContextProviderProps) => {
         }
     }
 
-    const removeOng = async (ongId: Number, setLoading: React.Dispatch<React.SetStateAction<boolean>> ) => {
+    const removeOng = async (ongId: Number, setLoading: React.Dispatch<React.SetStateAction<boolean>>, onClose: () => void) => {
         const token = localStorage.getItem("@TOKEN")
         try{
             setLoading(true)
@@ -82,6 +82,7 @@ export const OngsProvider = ({ children }: IOngsContextProviderProps) => {
             await api.delete(`/ongs/${ongId}`)
             const newOngsList = listCard.filter(currentOng => currentOng.id !== ongId)
             setListCard(newOngsList)
+            onClose()
         } catch (error){
             toast("Não foi possível remover ONG, tente novamente")
         } finally{

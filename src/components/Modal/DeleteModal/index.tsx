@@ -24,7 +24,7 @@ export const DeleteModal = ({ ong, onClose }: IDelete) => {
                     <img src={ong?.logo} alt={`Logo da ONG ${ong?.name}`} className="mr-[1rem] max-w-[11.625rem] mobile:max-w-[9rem]" />
                     <p className="text-white text-[1.125rem]">{ong?.name}</p>
                 </div>
-                <button type="submit" disabled={loading} onClick={() => removeOng(ong.id, setLoading)} className="w-full bg-[#3AB8C7] flex justify-center items-center h-[3rem] rounded-[1.25rem] text-white justify-around mt-7 mb-20">
+                <button type="submit" disabled={loading} onClick={() => removeOng(ong.id, setLoading, onClose)} className="w-full bg-[#3AB8C7] flex justify-center items-center h-[3rem] rounded-[1.25rem] text-white justify-around mt-7 mb-20">
                     {loading ? <ClipLoader color="#ffffff" size={20}/> : "Deletar ONG"}
                 </button>
             </div>

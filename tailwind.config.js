@@ -23,7 +23,7 @@ export default {
         'change-background-image': {
           '0%': {backgroundImage: "url('./src/assets/background-image-1.jpg')" },
           '30%': {backgroundImage: "url('./src/assets/background-image-2.jpg')"},
-          '60%': {backgroundImage: "url(./src/assets/background-image-3.jpg)"},
+          '60%': {backgroundImage: "url('./src/assets/background-image-3.jpg')"},
           '100%': {backgroundImage: "url('./src/assets/background-image-4.jpg')"}
         }
       }
